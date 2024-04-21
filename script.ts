@@ -1,89 +1,30 @@
-class User {
-  public static count: number = 0;
+class Point { x: number; y: number }
+let point: Point = new Point();
+// point.x = 1;
+// point.y = 1;
 
-  protected _name: string;
-  protected _login: string;
-  protected _password: string;
-  protected _grade: number;
+class Rect {
+    private x1: number;
+    public x2: number;
+    y1: number;
+    y2: number;
+    private readonly MAX_COORD = 1000;
+    constructor(x?: number, y?: number) {
+        // this.x1 = x
+    }
+    square() {
+        return Math.abs(this.x1 - this.x2) * Math.abs(this.y1 - this.y2)
+    }
 
-  constructor(name: string, login: string, password: string, grade: number) {
-      this._name = name;
-      this._login = login;
-      this._password = password;
-      this._grade = grade;
-      User.count++;
-  }
-
-  get name(): string {
-      return this._name;
-  }
-
-  set name(value: string) {
-      this._name = value;
-  }
-
-  get login(): string {
-      return this._login;
-  }
-
-  set login(value: string) {
-      console.log("Невозможно изменить логин!");
-  }
-
-  get password(): string {
-      return '****';
-  }
-
-  get grade(): number {
-      return this._grade;
-  }
-
-  eq(user: User): boolean {
-      return this._grade === user._grade;
-  }
-
-  lt(user: User): boolean {
-      return this._grade < user._grade;
-  }
-
-  gt(user: User): boolean {
-      return this._grade > user._grade;
-  }
 }
 
-class SuperUser extends User {
-  public static count: number = 0;
+let rect: Rect = new Rect();
+// rect.x1 = 1;
+// rect.x2 = 1;
+// rect.y1 = 1;
+// rect.y2 = 1;
 
-  private _role: string;
-
-  constructor(name: string, login: string, password: string, role: string, grade: number) {
-      super(name, login, password, grade);
-      this._role = role;
-      SuperUser.count++;
-  }
-
-  get role(): string {
-      return this._role;
-  }
-
-  set role(value: string) {
-      this._role = value;
-  }
-}
-
-const user1 = new User('Paul McCartney', 'paul', '1234', 3);
-const user2 = new User('George Harrison', 'george', '5678', 2);
-const user3 = new User('Richard Starkey', 'ringo', '8523', 3);
-const admin = new SuperUser('John Lennon', 'john', '0000', 'admin', 5);
-
-console.log(`Всего обычных пользователей: ${User.count}`);
-console.log(`Всего супер-пользователей: ${SuperUser.count}`);
-
-console.log(user1.lt(user2));
-console.log(admin.gt(user3));
-console.log(user1.eq(user3));
-console.log(user3.name);
-console.log(user2.password);
-console.log(user2.login);
-console.log(user3.grade);
-console.log(user3.grade);
+let rect1: Rect = new Rect(10, 20);
+// rect1.x1 = 5;
+rect1.x2 = 5;
+rect1.square()
